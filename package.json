@@ -1,0 +1,40 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "charity",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./start_script.sh"
+  },
+  "keywords": [
+    "Charity"
+  ],
+  "author": "Hamdi Yassine",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "babel-preset-env": "^1.7.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^2.3.3",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6",
+    "html-pdf": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mkdirp": "^1.0.3",
+    "moment": "^2.27.0",
+    "mongoose": "^5.8.11",
+    "phantom-html-to-pdf": "^0.6.0",
+    "shortid": "^2.2.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "nodemon": "^2.0.4"
+  }
+}
