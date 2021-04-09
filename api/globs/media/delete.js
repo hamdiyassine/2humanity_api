@@ -1,5 +1,7 @@
-import { acceptableImage } from '../helpers/accept-file';
-import fs from 'fs'
+const fs   = require('fs');
+const acceptableImage = require('../helpers/accept-file');
+
+
 const Media   = require('../../models/Media');
 //const mkdirp = require('mkdirp')
 

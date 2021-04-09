@@ -2,21 +2,19 @@ const { JWT_SECRET, JWT_EXPIRES_IN } = require('../../../config/general');
 
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
-import Axios from "axios"
+const Axios=require('axios');
 // const fs    = require('file-system');
 
 const bcrypt = require('bcryptjs');
 
-import login from "./auth/login";
+const signup=require('./auth/signup');
+const login=require('./auth/login');
+const createOneMedia=require('../../globs/media/create');
 
 
-import signup from "./auth/signup";
 
 
-import { createOneMedia } from "../../globs/media/create";
 //import { deleteOneMedia } from "../../globs/media/delete";
-
-
 
 module.exports = {
   login: async (req, res, next) => {

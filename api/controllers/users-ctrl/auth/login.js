@@ -36,4 +36,4 @@ const login = async (User, email, pass, bcrypt, jwt, JWT_SECRET, JWT_EXPIRES_IN,
   }
 }
 
-export default login
+module.exports = login;

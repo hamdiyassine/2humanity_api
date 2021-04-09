@@ -1,5 +1,4 @@
-import isValidMobile from "../../../globs/helpers/is-valid-mobile";
-
+const isValidMobile = require("../../../globs/helpers/is-valid-mobile");
 const signup = async (User, data, bcrypt, jwt, JWT_SECRET, JWT_EXPIRES_IN, createOneMedia, files = null, Axios) => {
   if (!data.pass || data.pass.toString().length == 0)
     return { status: false, code: 409, err: { msg: "wrong password" } }
@@ -57,4 +56,4 @@ const signup = async (User, data, bcrypt, jwt, JWT_SECRET, JWT_EXPIRES_IN, creat
   return { status: true, code: 201, data: { token, user: new_user } }
 }
 
-export default signup
+module.exports =signup;

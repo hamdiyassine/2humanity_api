@@ -19,6 +19,13 @@ const User = Schema({
     region: { type: String, default: "" },
     zipcode: { type: String, default: "" },
   },
+  // new
+  posts: [
+    {
+       type: mongoose.Schema.Types.ObjectId,
+       ref: 'Post'
+    }
+ ]
 
 
   //active: { type: Boolean, default: true },
