@@ -1,6 +1,5 @@
-import isValidEmail from "./is-valid-email";
-import makeHttpError from "./http-error";
-
+const isValidEmail = require('./is-valid-email');
+const makeHttpError=require('./http-error');
 export  function upperFirst (word) {
   if (word.length === 1) return word.toUpperCase()
   

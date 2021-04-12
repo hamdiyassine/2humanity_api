@@ -1,8 +1,7 @@
 const Media  = require('../../models/Media');
 // const fs    = require('file-system');
 
-import getAll from "./get-all";
-
+const getAll=require('./get-all');
 module.exports = {
   getAll: async (req, res, next) =>{
     const resp = await getAll(Media)

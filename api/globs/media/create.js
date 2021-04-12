@@ -1,7 +1,7 @@
-import { acceptableImage } from '../helpers/accept-file';
-import { fileSize } from '../helpers/file-size';
 
 
+const acceptableImage = require('../helpers/accept-file');
+const fileSize=require('../helpers/file-size');
 const Media = require('../../models/Media');
 const mkdirp = require('mkdirp')
 
@@ -83,4 +83,4 @@ const createMediaFromBase64 = async (directory, base64String, fs, file_name, des
   }
 }
 
-export { createOneMedia, createMediaFromBase64 }
+module.exports ={createOneMedia, createMediaFromBase64};

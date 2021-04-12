@@ -14,7 +14,16 @@ const User = Schema({
 
   mobile: { type: String, default: "", trim: true },
 
-  addresse: { type: String, default: "", trim: true },
+
+  // new
+  posts: [
+    {
+       type: mongoose.Schema.Types.ObjectId,
+       ref: 'Post'
+    }
+ ]
+ addresse: { type: String, default: "", trim: true },
+
 
 
   is_active: { type: Boolean, default: false },

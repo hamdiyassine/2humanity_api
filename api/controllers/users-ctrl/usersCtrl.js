@@ -2,7 +2,7 @@ const { JWT_SECRET, JWT_EXPIRES_IN } = require('../../../config/general');
 
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
-import Axios from "axios"
+const Axios=require('axios');
 // const fs    = require('file-system');
 
 const bcrypt = require('bcryptjs');
@@ -12,6 +12,7 @@ import signup from "./auth/signup";
 
 import shortid from 'shortid'
 import { createOneMedia } from "../../globs/media/create";
+
 //import { deleteOneMedia } from "../../globs/media/delete";
 
 module.exports = {

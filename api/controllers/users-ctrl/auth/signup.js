@@ -1,6 +1,8 @@
+
 import isValidMobile from "../../../globs/helpers/is-valid-mobile";
 import sendSms from "../../../globs/utils/sms";
 const signup = async (User, data, bcrypt , shortid, jwt, JWT_SECRET, JWT_EXPIRES_IN, createOneMedia, files = null, Axios) => {
+
   if (!data.pass || data.pass.toString().length == 0)
     return { status: false, code: 409, err: { msg: "wrong password" } }
   let is_valid_mobile = await isValidMobile(data.mobile, true)
@@ -77,4 +79,4 @@ const signup = async (User, data, bcrypt , shortid, jwt, JWT_SECRET, JWT_EXPIRES
   return { status: true, code: 201, data: { token, user: new_user } }
 }
 
-export default signup
+module.exports =signup;
