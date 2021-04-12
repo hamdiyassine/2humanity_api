@@ -12,6 +12,7 @@ import login from "./auth/login";
 
 import signup from "./auth/signup";
 
+import shortid from 'shortid'
 
 import { createOneMedia } from "../../globs/media/create";
 //import { deleteOneMedia } from "../../globs/media/delete";
@@ -31,7 +32,7 @@ module.exports = {
   signup: async (req, res, next) => {
     const resp = await signup(
       User, req.body,
-      bcrypt, jwt, JWT_SECRET, JWT_EXPIRES_IN, createOneMedia, req.files, Axios, process.env.ROCKETCHAT_API, process.env.ROCKETCHAT_API_X_Auth_Token, process.env.ROCKETCHAT_API_X_User_Id
+      bcrypt, shortid , jwt, JWT_SECRET, JWT_EXPIRES_IN, createOneMedia, req.files, Axios, process.env.ROCKETCHAT_API, process.env.ROCKETCHAT_API_X_Auth_Token, process.env.ROCKETCHAT_API_X_User_Id
     )
 
     return res.status(resp.code).json(resp.status ? resp.data : resp.err);
