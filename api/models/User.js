@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const User = Schema({
   email: { type: String, default: "", trim: true },
   pass: { type: String, default: "" },
-
+  name: { type: String, default: "" },
   rating: { type: Number, default: 0, trim: true },
   
   type: { type: String,trim: true , enum: ["association", "volunteer"] },
@@ -14,11 +14,7 @@ const User = Schema({
 
   mobile: { type: String, default: "", trim: true },
 
-  addresse: {
-    city: { type: String, default: "" },
-    region: { type: String, default: "" },
-    zipcode: { type: String, default: "" },
-  },
+
   // new
   posts: [
     {
@@ -26,9 +22,11 @@ const User = Schema({
        ref: 'Post'
     }
  ]
+ addresse: { type: String, default: "", trim: true },
 
 
-  //active: { type: Boolean, default: true },
+
+  is_active: { type: Boolean, default: false },
 }, {
   collection: 'users',
   timestamps: true
