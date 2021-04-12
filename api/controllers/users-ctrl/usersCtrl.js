@@ -8,16 +8,11 @@ import Axios from "axios"
 const bcrypt = require('bcryptjs');
 
 import login from "./auth/login";
-
-
 import signup from "./auth/signup";
 
 import shortid from 'shortid'
-
 import { createOneMedia } from "../../globs/media/create";
 //import { deleteOneMedia } from "../../globs/media/delete";
-
-
 
 module.exports = {
   login: async (req, res, next) => {
@@ -36,5 +31,7 @@ module.exports = {
     )
 
     return res.status(resp.code).json(resp.status ? resp.data : resp.err);
-  }
-}
+  },
+
+};
+
