@@ -57,6 +57,8 @@ app.use(fileUpload(
 app.use('/users', require('./api/routes/users-routes'));
 app.use('/medias', require('./api/routes/media-routes'));
 app.use('/posts', require('./api/routes/posts-routes'));
+app.use('/events', require('./api/routes/events-routes'));
+app.use('/comments',require('./api/routes/comments-routes'));
 
 app.get('/', (req, res, next) => {
   console.log('OPEN ROOT !');
