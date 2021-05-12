@@ -12,6 +12,9 @@ import subscribe from "./actions/subscribe";
 import { createOneMedia } from "../../globs/media/create";
 import { deleteMedia } from "../../globs/media/delete";
 
+var requestIp = require('request-ip');
+var getIP = require('ipware')().get_ip;
+
 module.exports = {
   create: async (req, res, next) =>{
     const resp = await create(Event, req.body, req.tokenData, createOneMedia, req.files)
@@ -19,6 +22,10 @@ module.exports = {
     return res.status(resp.code).json(resp.status ? resp.data : resp.err);
   },
   getAll: async (req, res, next) =>{
+    const parseIp = (req) =>  req.connection.remoteAddress.split(":")[3];
+
+    console.log("Adresse Ip : ",parseIp(req));
+
     const resp = await getAll(Event, req.tokenData, req.params.offset, req.params.limit)
     
     return res.status(resp.code).json(resp.status ? resp.data : resp.err);

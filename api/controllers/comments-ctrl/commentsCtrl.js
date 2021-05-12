@@ -1,5 +1,5 @@
-const Comment = require("../../models/Social/Comment");
-const Post = require("../../models/Social/Post");
+const Comment = require("../../models/Comment");
+const Post = require("../../models/Post");
 const ObjectId = require('mongodb').ObjectId;
 
 

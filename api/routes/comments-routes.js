@@ -1,10 +1,10 @@
 const express = require('express');
 const commentsRoutes = express.Router();
 
-const commentsCtrl = require("../../controllers/Social/comments-ctrl/commentsCtrl");
+const commentsCtrl = require("../controllers/comments-ctrl/commentsCtrl");
 
 
-const checkAuth = require('../../middleware/check-auth');
+const checkAuth = require('../middleware/check-auth');
 
 
 // GET ALL Comments 

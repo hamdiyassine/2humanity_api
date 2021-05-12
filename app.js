@@ -9,7 +9,9 @@ const cors=require("cors");
 const mongoose=require("mongoose");
 const dotenv=require("dotenv");
 dotenv.config();
+var getIP = require('ipware')().get_ip;
 
+var requestIp = require('request-ip');
 
 mongoose.Promise = global.Promise;
 console.log('process.env.MONGO_DB', process.env.MONGO_DB);
@@ -62,6 +64,11 @@ app.use('/comments',require('./api/routes/comments-routes'));
 
 app.get('/', (req, res, next) => {
   console.log('OPEN ROOT !');
+  var clientIp = requestIp.getClientIp(req);
+  var ipInfo = getIP(req);
+  console.log(clientIp);
+    // { clientIp: '127.0.0.1', clientIpRoutable: false }
+  next();
   res.status(200).json({ msg: ' API DEV', port: process.env.PORT || 5000 });
  
 })
