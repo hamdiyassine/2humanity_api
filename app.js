@@ -6,8 +6,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-
+var Sentiment = require('sentiment');
+var sentiment = new Sentiment();
 import dotenv from "dotenv";
+import User, { collection } from "./api/models/User";
+import e from "express";
+import Post from "./api/models/Post";
+import Comment from "./api/models/Comment";
 dotenv.config();
 
 
@@ -34,7 +39,32 @@ const options = {
         console.error('Failed to connect to mongo on startup - retrying in 5 sec', err);
         setTimeout(connectWithRetry, 5000);
       }
+    
+      //console.log(process.env.DB)
       console.log('Database is connected')
+     
+    //portail ***rating based on comments***
+    const rating = (userId) => {
+      let comments = []
+      User.findById(userId).then(user => Post.find({postedBy: user._id})
+      .then(filteredPosts => filteredPosts.map(filteredPost => filteredPost._id))
+        .then(filteredPostsIds => 
+          filteredPostsIds.map(filteredPostId => Comment.find({post : filteredPostId })
+          .then(relatedComments => relatedComments.map(relatedComment => relatedComment.comments.map(comment => comment.message)))
+          .then(data => data.map(el => el.map(msg => comments.push(msg))
+            )).then(() => comments.reduce(
+              (total, rec) => total + sentiment.analyze(rec).score , 0
+            )).then(rate => User.findByIdAndUpdate(userId, {rating : rate}))
+          )
+        )
+      )
+    }
+
+    User.find().then(users => users.map(
+      user => rating(user._id)
+    ))
+    
+
     });
   };
   connectWithRetry();
@@ -56,7 +86,9 @@ app.use(fileUpload(
 
 app.use('/users', require('./api/routes/users-routes'));
 app.use('/medias', require('./api/routes/media-routes'));
-
+app.use('/posts', require('./api/routes/posts-routes'));
+//app.use('/events', require('./api/routes/events-routes'));
+app.use('/comments',require('./api/routes/comments-routes'));
 
 app.get('/', (req, res, next) => {
   console.log('OPEN ROOT !');
