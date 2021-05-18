@@ -6,8 +6,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-var Sentiment = require('sentiment');
-var sentiment = new Sentiment();
+var sentiment = require('multilang-sentiment');
+// var Sentiment = require('sentiment');
+// var sentiment = new Sentiment();
 import dotenv from "dotenv";
 import User, { collection } from "./api/models/User";
 import e from "express";
@@ -53,7 +54,7 @@ const options = {
           .then(relatedComments => relatedComments.map(relatedComment => relatedComment.comments.map(comment => comment.message)))
           .then(data => data.map(el => el.map(msg => comments.push(msg))
             )).then(() => comments.reduce(
-              (total, rec) => total + sentiment.analyze(rec).score , 0
+              (total, rec) => total + sentiment(rec, 'fr').score , 0
             )).then(rate => User.findByIdAndUpdate(userId, {rating : rate}))
           )
         )
