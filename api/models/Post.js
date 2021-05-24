@@ -3,7 +3,8 @@ var Schema=mongoose.Schema;
 var Post=new Schema({
     title:{type:String,default:"",required:true},
     content:{type:String,default:"",required:true},
-    media:{type:mongoose.Schema.Types.ObjectId, ref:'Media'},
+    media:{type:String,default:"",required:true},
+
     postedBy: 
         {
            type: mongoose.Schema.Types.ObjectId,

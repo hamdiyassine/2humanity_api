@@ -7,10 +7,11 @@ module.exports = {
 
         user = req.params;
         id = User.id;
-        const { title, content} = req.body;
+        const { title, content,media} = req.body;
         const post = await Post.create({
             title,
             content,
+            media
             
         });
          await post.save()
