@@ -1,7 +1,7 @@
 //const Partner = require('../../models/Schooling/Partner');
 const User = require('../../models/User');
 
-export default async function isValidMobile(mobile, is_user = false) {
+ async function isValidMobile(mobile, is_user = false) {
     const valid = new RegExp(/^[0-9]{8}$/);
     let test = valid.test(mobile)
 
@@ -26,3 +26,4 @@ export default async function isValidMobile(mobile, is_user = false) {
         return false
     }
 }
+module.exports =isValidMobile;

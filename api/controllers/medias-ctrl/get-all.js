@@ -10,4 +10,4 @@ const getAll = async (Media)=>{
   }
 }
 
-export default getAll
+module.exports=getAll;

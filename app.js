@@ -2,12 +2,12 @@
 //===========> pm2 start 'npm start' --name app
 
 
-import express from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
-import mongoose from "mongoose";
 
-import dotenv from "dotenv";
+const express=require('express');
+const bodyParser=require("body-parser");
+const cors=require("cors");
+const mongoose=require("mongoose");
+const dotenv=require("dotenv");
 dotenv.config();
 
 
@@ -56,13 +56,13 @@ app.use(fileUpload(
 
 app.use('/users', require('./api/routes/users-routes'));
 app.use('/medias', require('./api/routes/media-routes'));
-
+app.use('/posts', require('./api/routes/posts-routes'));
 
 app.get('/', (req, res, next) => {
   console.log('OPEN ROOT !');
   res.status(200).json({ msg: ' API DEV', port: process.env.PORT || 5000 });
+ 
 })
-
 const port = process.env.PORT || 5000;
 app.listen(port, function () {
   console.info('Listening on port ' + port);
