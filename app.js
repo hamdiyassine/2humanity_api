@@ -59,12 +59,12 @@ app.use('/comments',require('./api/routes/comments-routes'));
 
 app.get('/', (req, res, next) => {
   console.log('OPEN ROOT !');
-  var clientIp = requestIp.getClientIp(req);
-  var ipInfo = getIP(req);
-  console.log(clientIp);
+  // var clientIp = requestIp.getClientIp(req);
+  // var ipInfo = getIP(req);
+  // console.log(clientIp);
     // { clientIp: '127.0.0.1', clientIpRoutable: false }
   next();
-  res.status(200).json({ msg: ' API DEV', port: process.env.PORT || 5000 });
+  res.status(200).json({ msg: 'PORTAIL API DEV', port: process.env.PORT || 5000 });
  
 })
 const port = process.env.PORT || 5000;

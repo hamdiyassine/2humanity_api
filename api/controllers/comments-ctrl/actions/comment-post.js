@@ -14,8 +14,8 @@ const create = async (Comment, Post, data, tokenData, post_id, ObjectId) => {
         if (!post) return { status: false, code: 409, err: { msg: "Wrong post id" } }
 
         const old_comment = await Comment.findOne({ post: post_id });
-
-        post_comments = old_comment.comments;
+        if (old_comment ) post_comments = old_comment.comments;
+       
 
         post_comments.push({ user: data.user, message: message })
 
@@ -24,7 +24,14 @@ const create = async (Comment, Post, data, tokenData, post_id, ObjectId) => {
             comments: post_comments
         }
 
-        const patch = await Comment.updateOne({ _id: old_comment._id }, { $set: new_data });
+        let patch = null
+        if (old_comment ) patch = await Comment.updateOne({ _id: old_comment._id }, { $set: new_data });
+        else{
+            const new_comments = new Comment({
+                ...new_data, post: post_id
+            });
+            patch = await new_comments.save();
+        }
 
         if (patch) {
             const post = await Post.findById(post_id)

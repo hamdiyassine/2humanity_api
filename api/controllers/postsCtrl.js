@@ -2,6 +2,10 @@
 const { createIndexes } = require('../models/Post');
 const Post = require('../models/Post');
 const User = require('../models/User');
+import getAdress from "../globs/helpers/find-adress";
+import getGeolocationIp from "../globs/helpers/geolocation-ip";
+import getPublicIpAdress from "../globs/helpers/public-IpAdress";
+
 
 module.exports = {
     create : async (req, res) => {
@@ -88,7 +92,75 @@ module.exports = {
         })
     })
     .catch(err=>console.log(err))
-})
+    })
     
     }  
 } 
+
+    }  ,
+
+
+    getByIp : async (req,res)=>{
+        const parseIp = (req) =>  req.connection.remoteAddress.split(":")[3];
+        let adressIp = parseIp(req)
+        //console.log("Adresse Ip : ",adressIp);
+        const usersList = []
+        const publicIp = await getPublicIpAdress({adressIp})
+        // .then(adr =>{
+        //     //console.log("Public Ip Adress : " ,adr);
+        // })
+        if (publicIp){
+            //console.log("Public Ip Adress : " ,publicIp);
+            
+            // const geolocation =
+             
+            await getGeolocationIp({adressIp:publicIp.ip})
+            .then(geo =>{
+                const position =  {lat : geo.latitude , lon: geo.longitude }
+               // console.log("getGeolocationIp : " ,position);
+                
+                const users = User.find()
+                .then(async (users) =>{
+                    //console.log("//users : ",res);
+                    for (let i = 0; i < users.length; i++) {
+                        await getAdress({adress :users[i].addresse })
+                        .then(adressRes=>{
+                            //console.log("!!!! adress user : " ,adressRes );
+                            if(parseFloat(adressRes.lat)-parseFloat(position.lat)>0 &&  parseFloat(adressRes.lat)-parseFloat(position.lat)<1){
+                                usersList.push(users[i]._id)
+                            }else{
+                                if(parseFloat(position.lat)-parseFloat(adressRes.lat)>0 &&  parseFloat(position.lat)-parseFloat(adressRes.lat)<1){
+                                    usersList.push(users[i]._id)
+                                }
+                            }
+                        })
+                        
+                    }
+                    //console.log("///// usersList  : ",usersList);
+                    Post.find({ postedBy : { $in: usersList } })
+                    .then((posts)=>{
+                        console.log("///// posts  : ",posts);
+                        res.json(posts);
+                    })
+                    .catch(err=>console.log(err))
+                })
+
+                
+             })
+             .catch(err=>console.log(err))
+        }
+        else{
+            res.json({error:"ip not found"})
+        }
+        
+        
+        // const { id } = req.params;
+        // const userByPost = await Post.findById(id).populate('user');
+        // Post.find()
+        // .then((posts)=>{
+        //     res.json(posts);
+        // })
+        // .catch(err=>console.log(err))
+
+    },
+}
