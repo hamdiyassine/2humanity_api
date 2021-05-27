@@ -1,8 +1,3 @@
-//===========> pm2 start npm -- run start
-//===========> pm2 start 'npm start' --name app
-
-
-
 const express=require('express');
 const bodyParser=require("body-parser");
 const cors=require("cors");

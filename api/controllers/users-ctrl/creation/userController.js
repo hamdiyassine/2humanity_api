@@ -16,7 +16,19 @@ exports.findAll = (req, res) => {
         });
       });
   };
+  exports.findAllByPoints = (req, res) => {
+    User.find()
+      .sort({ points: -1 }).limit(8)
 
+      .then((users) => {
+        res.status(200).send(users);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Error Occured",
+        });
+      });
+  };
   /**
  * Find one User
  */
@@ -37,6 +49,7 @@ exports.findOne = (req, res) => {
         });
       });
   };
+ 
 
 
   /**

@@ -30,4 +30,4 @@ const getPostComments = async (Comment, Post, post_id, ObjectId) => {
     }
 }
 
-export default getPostComments
+module.exports=getPostComments;

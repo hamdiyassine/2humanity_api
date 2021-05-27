@@ -1,5 +1,5 @@
 
-export const getAll = async (Event, tokenData, offset = null, limit = null) => {
+ const getAll = async (Event, tokenData, offset = null, limit = null) => {
   
     try {
       const events = await Event.find()
@@ -12,7 +12,6 @@ export const getAll = async (Event, tokenData, offset = null, limit = null) => {
       if (!events) return { status: false, code: 500, err: { msg: "error finding" } }
   
       const count = await Event.find().countDocuments()
-  
       return {
         status: true, code: 200, data: {
           events,
@@ -25,4 +24,4 @@ export const getAll = async (Event, tokenData, offset = null, limit = null) => {
     }
   }
   
-  
+module.exports=getAll;

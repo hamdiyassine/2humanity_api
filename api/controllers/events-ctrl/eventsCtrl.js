@@ -2,18 +2,20 @@ const Event   = require('../../models/Event');
 // const User          = require('../../models/User');
 // const fs    = require('file-system');
 
-import create from "./actions/create";
-import patch from './actions/patch';
-import { deleteOne } from './actions/delete';
-import { getAll } from "./actions/get-all";
-import { getByUser } from "./actions/get-by-user";
-import { getOne } from "./actions/get-one";
-import subscribe from "./actions/subscribe";
-import { createOneMedia } from "../../globs/media/create";
-import { deleteMedia } from "../../globs/media/delete";
+const create =require( "./actions/create");
+const patch =require( './actions/patch');
+const deleteOne  =require( './actions/delete');
+const  getAll  =require( "./actions/get-all");
+const  Recommended  =require( "./actions/Recommend");
+const  getByUser  =require( "./actions/get-by-user");
+const  getOne  =require( "./actions/get-one");
+const subscribe =require( "./actions/subscribe");
+const { createOneMedia } =require( "../../globs/media/create");
+const { deleteMedia } =require( "../../globs/media/delete");
 
-var requestIp = require('request-ip');
-var getIP = require('ipware')().get_ip;
+
+// var requestIp = require('request-ip');
+// var getIP = require('ipware')().get_ip;
 
 module.exports = {
   create: async (req, res, next) =>{
@@ -27,6 +29,14 @@ module.exports = {
     console.log("Adresse Ip : ",parseIp(req));
 
     const resp = await getAll(Event, req.tokenData, req.params.offset, req.params.limit)
+    
+    return res.status(resp.code).json(resp.status ? resp.data : resp.err);
+  },
+  Recommended: async (req, res, next) =>{
+    const parseIp = (req) =>  req.connection.remoteAddress.split(":")[3];
+
+
+    const resp = await Recommended(Event,req.params.userId, req.params.offset)
     
     return res.status(resp.code).json(resp.status ? resp.data : resp.err);
   },
@@ -54,5 +64,6 @@ module.exports = {
     const resp = await deleteOne(Event, req.tokenData, req.params.eventId, deleteMedia)
     
     return res.status(resp.code).json(resp.status ? resp.data : resp.err);
-  }
+  },
+  
 }

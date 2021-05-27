@@ -52,5 +52,4 @@ const patch = async (Event, tokenData, data, event_id, files, createOneMedia, de
     return {status: false, code: 500, err}
   }
 }
-
-export default patch
+module.exports=patch;
