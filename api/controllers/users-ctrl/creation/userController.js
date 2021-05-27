@@ -1,5 +1,12 @@
 const User = require("../../../models/User");
 const bcrypt = require("bcryptjs");
+import e from "express";
+import Post from "../../../models/Post";
+import Comment from "../../../models/Comment";
+//import User, { collection } from "../../../models/User";
+var sentiment = require('multilang-sentiment');
+// var Sentiment = require('sentiment');
+// var sentiment = new Sentiment();
 
 /** 
  * Find all Users
@@ -85,3 +92,21 @@ exports.update = (req, res) => {
         });
       });
 };
+
+
+//portail ***rating based on comments***
+exports.rating = (userId) => {
+  let comments = []
+  User.findById(userId).then(user => Post.find({postedBy: user._id})
+  .then(filteredPosts => filteredPosts.map(filteredPost => filteredPost._id))
+    .then(filteredPostsIds => 
+      filteredPostsIds.map(filteredPostId => Comment.find({post : filteredPostId })
+      .then(relatedComments => relatedComments.map(relatedComment => relatedComment.comments.map(comment => comment.message)))
+      .then(data => data.map(el => el.map(msg => comments.push(msg))
+        )).then(() => comments.reduce(
+          (total, rec) => total + sentiment(rec, 'fr').score , 0
+        )).then(rate => User.findByIdAndUpdate(userId, {rating : rate}))
+      )
+    )
+  )
+}

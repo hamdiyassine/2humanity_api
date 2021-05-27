@@ -6,14 +6,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-var sentiment = require('multilang-sentiment');
-// var Sentiment = require('sentiment');
-// var sentiment = new Sentiment();
 import dotenv from "dotenv";
 import User, { collection } from "./api/models/User";
-import e from "express";
-import Post from "./api/models/Post";
-import Comment from "./api/models/Comment";
+const userController = require('./api/controllers/users-ctrl/creation/userController');
 dotenv.config();
 
 
@@ -44,25 +39,10 @@ const options = {
       //console.log(process.env.DB)
       console.log('Database is connected')
      
-    //portail ***rating based on comments***
-    const rating = (userId) => {
-      let comments = []
-      User.findById(userId).then(user => Post.find({postedBy: user._id})
-      .then(filteredPosts => filteredPosts.map(filteredPost => filteredPost._id))
-        .then(filteredPostsIds => 
-          filteredPostsIds.map(filteredPostId => Comment.find({post : filteredPostId })
-          .then(relatedComments => relatedComments.map(relatedComment => relatedComment.comments.map(comment => comment.message)))
-          .then(data => data.map(el => el.map(msg => comments.push(msg))
-            )).then(() => comments.reduce(
-              (total, rec) => total + sentiment(rec, 'fr').score , 0
-            )).then(rate => User.findByIdAndUpdate(userId, {rating : rate}))
-          )
-        )
-      )
-    }
+    
 
     User.find().then(users => users.map(
-      user => rating(user._id)
+      user => userController.rating(user._id)
     ))
     
 
