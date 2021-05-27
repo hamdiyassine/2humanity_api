@@ -7,13 +7,13 @@ const User = Schema({
   rating: { type: Number, default: 0, trim: true },
   
   type: { type: String,trim: true , enum: ["association", "volunteer"] },
-
+  category:{type:String,default:"Other"},
 
   avatar: { type: Schema.Types.ObjectId, ref: 'Media', default: '528149b38da5b85003000002' },
 
 
   mobile: { type: String, default: "", trim: true },
-
+  points:{type:Number,default:0},
 
   // new
   posts: [

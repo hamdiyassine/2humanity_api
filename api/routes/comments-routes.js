@@ -8,12 +8,14 @@ const checkAuth = require('../middleware/check-auth');
 
 
 // GET ALL Comments 
-commentsRoutes.get('/:postId', checkAuth.tokenData, commentsCtrl.getPostComments);
+
+commentsRoutes.get('/:postId',checkAuth.tokenData, commentsCtrl.getPostComments);
 
 
 
 // ADD COMMENT
-commentsRoutes.post('/:postId', checkAuth.secure, commentsCtrl.comment);
+
+commentsRoutes.post('/:postId',checkAuth.secure, commentsCtrl.comment);
 
 
 // REMOVE COMMENT

@@ -1,4 +1,4 @@
-export const deleteOne = async (Comment, Post, post_id, comment_id, ObjectId) => {
+ const deleteOne = async (Comment, Post, post_id, comment_id, ObjectId) => {
 
     if (!ObjectId.isValid(post_id)) return { status: false, code: 409, err: { msg: "wrong post id" } }
     if (!ObjectId.isValid(comment_id)) return { status: false, code: 409, err: { msg: "wrong comment id" } }
@@ -41,3 +41,4 @@ export const deleteOne = async (Comment, Post, post_id, comment_id, ObjectId) =>
         return { status: false, code: 500, err }
     }
 }
+module.exports=deleteOne;

@@ -39,4 +39,4 @@ const subscibe = async (Event, event_id, data, tokenData)=>{
   }
 }
 
-export default subscibe
+module.exports=subscibe;

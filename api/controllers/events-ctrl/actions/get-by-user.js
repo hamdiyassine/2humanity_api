@@ -1,5 +1,5 @@
 
-export const getByUser = async (Event, tokenData, user, offset = 0, limit = 10) => {
+ const getByUser = async (Event, tokenData, user, offset = 0, limit = 10) => {
   const filter = { user: user }
 
   // if(!tokenData || !tokenData.admin_roles.includes("ADMIN")){
@@ -12,7 +12,6 @@ export const getByUser = async (Event, tokenData, user, offset = 0, limit = 10) 
       .sort({ _id: -1 })
 
     console.log('events', events);
-
 
     if (!events) return { status: false, code: 500, err: { msg: "error finding" } }
 
@@ -30,3 +29,4 @@ export const getByUser = async (Event, tokenData, user, offset = 0, limit = 10) 
   }
 }
 
+module.exports=getByUser;

@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 const Event = Schema({
 
     name: { type: String, default: "" },
-    cover: { type: Schema.Types.ObjectId, ref: 'Media' },
-
+    cover: {type: String,default:"" },
+    category:{type: String, default: ""},
     date_start: { type: Date, default: "" },
     date_end: { type: Date, default: "" },
 
@@ -13,9 +13,11 @@ const Event = Schema({
 
     desc: { type: String, default: "" },
 
-    subscribers: [{
+    subscribers: [
+      {
       subscribe: { type: Schema.Types.ObjectId, ref: 'User' },
-    }],
+    }
+  ],
 
 
     user:{type: Schema.Types.ObjectId, ref:"User"}

@@ -1,6 +1,7 @@
 
-import isValidMobile from "../../../globs/helpers/is-valid-mobile";
-import sendSms from "../../../globs/utils/sms";
+
+const isValidMobile=require('../../../globs/helpers/is-valid-mobile');
+
 const signup = async (User, data, bcrypt , shortid, jwt, JWT_SECRET, JWT_EXPIRES_IN, createOneMedia, files = null, Axios) => {
 
   if (!data.pass || data.pass.toString().length == 0)

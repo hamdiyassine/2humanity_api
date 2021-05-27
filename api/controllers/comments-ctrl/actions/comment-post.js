@@ -1,6 +1,6 @@
 const create = async (Comment, Post, data, tokenData, post_id, ObjectId) => {
     let { message } = data;
-    if (!message || message == '') return { status: false, code: 409, err: { msg: "wrong comment" } }
+    if ( message == '') return { status: false, code: 409, err: { msg: "wrong comment" } }
 
     if (!ObjectId.isValid(post_id)) return { status: false, code: 409, err: { msg: "wrong post id" } }
 
@@ -53,4 +53,4 @@ const create = async (Comment, Post, data, tokenData, post_id, ObjectId) => {
     }
 }
 
-export default create
+module.exports=create;

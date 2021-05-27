@@ -1,4 +1,4 @@
-export const deleteOne = async (Event, tokenData, event_id, deleteMedia)=>{
+ const deleteOne = async (Event, tokenData, event_id, deleteMedia)=>{
 
   try {
     const event = await Event.findById(event_id)
@@ -14,3 +14,4 @@ export const deleteOne = async (Event, tokenData, event_id, deleteMedia)=>{
     return {status: false, code: 500, err}
   }
 }
+module.exports=deleteOne;

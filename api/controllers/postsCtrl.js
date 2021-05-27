@@ -1,4 +1,5 @@
 
+const { createIndexes } = require('../models/Post');
 const Post = require('../models/Post');
 const User = require('../models/User');
 
@@ -7,11 +8,13 @@ module.exports = {
 
         user = req.params;
         id = User.id;
-        const { title, content,media} = req.body;
+        const { title, content,media,category,postedBy} = req.body;
         const post = await Post.create({
             title,
             content,
-            media
+            media,
+            category,
+            postedBy //to remove i guess
             
         });
          await post.save()
@@ -20,6 +23,24 @@ module.exports = {
          
    
         const userById = await User.findById(id);
+        var userP = await User.findById(postedBy);
+        console.log("User"+userP)
+        console.log("Points"+userP.points)
+
+         userP.points=user.points+1;
+        var Newpoints=userP.points+1
+         await User.findByIdAndUpdate(postedBy,{points:Newpoints},
+            function(err, result) {
+              if (err) {
+                console.log("error "+err);
+              } else {
+                console.log(result);
+              }
+              
+            })
+        //  User.updateOne(points++)
+        
+        console.log("User points"+userP.points)
 
         userById.posts.push(post);
         await userById.save();

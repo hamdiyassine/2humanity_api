@@ -1,4 +1,4 @@
-export const getOne = async (Event, tokenData, event_id) => {
+ const getOne = async (Event, tokenData, event_id) => {
     try {
       const event = await Event.findById(event_id)
       .populate('cover')
@@ -15,3 +15,4 @@ export const getOne = async (Event, tokenData, event_id) => {
       return { status: false, code: 500, err }
     }
   }
+  module.exports=getOne;

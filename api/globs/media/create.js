@@ -83,4 +83,4 @@ const createMediaFromBase64 = async (directory, base64String, fs, file_name, des
   }
 }
 
-module.exports ={createOneMedia, createMediaFromBase64};
+module.exports={createOneMedia, createMediaFromBase64};

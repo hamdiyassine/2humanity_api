@@ -4,7 +4,8 @@ var Post=new Schema({
     title:{type:String,default:"",required:true},
     content:{type:String,default:"",required:true},
     media:{type:String,default:"",required:true},
-
+    category:{type:String,default:"",required:true},
+     
     postedBy: 
         {
            type: mongoose.Schema.Types.ObjectId,

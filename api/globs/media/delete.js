@@ -36,4 +36,4 @@ const deleteMedia = async (_id)=>{
   return{msg:'media not exist'} 
 }
 
-export {deleteOneMedia, deleteMedia}
+module.exports={deleteOneMedia, deleteMedia};
