@@ -21,7 +21,7 @@ const User = Schema({
        type: mongoose.Schema.Types.ObjectId,
        ref: 'Post'
     }
- ]
+ ],
  addresse: { type: String, default: "", trim: true },
 
 
