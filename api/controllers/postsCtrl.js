@@ -46,6 +46,7 @@ module.exports = {
         
         console.log("User points"+userP.points)
 
+
         userById.posts.push(post);
         await userById.save();
 

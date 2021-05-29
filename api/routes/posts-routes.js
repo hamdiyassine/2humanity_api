@@ -9,5 +9,12 @@ postsRouter.get('/findByUser/:id', postsCtrl.findById);
 postsRouter.delete('/deletePost/:id',postsCtrl.delete);
 postsRouter.put('/update/:id',postsCtrl.update);
 postsRouter.get('/getAll',postsCtrl.getAll);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 postsRouter.get('/',postsCtrl.getByIp);
+>>>>>>> develop
+=======
+postsRouter.get('/',postsCtrl.getByIp);
+>>>>>>> develop
 module.exports = postsRouter;

@@ -1,8 +1,16 @@
-const express=require('express');
-const bodyParser=require("body-parser");
-const cors=require("cors");
-const mongoose=require("mongoose");
-const dotenv=require("dotenv");
+
+//===========> pm2 start npm -- run start
+//===========> pm2 start 'npm start' --name app
+
+
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import User, { collection } from "./api/models/User";
+const userController = require('./api/controllers/users-ctrl/creation/userController');
+
 dotenv.config();
 var getIP = require('ipware')().get_ip;
 
@@ -31,7 +39,17 @@ const options = {
         console.error('Failed to connect to mongo on startup - retrying in 5 sec', err);
         setTimeout(connectWithRetry, 5000);
       }
+    
+      //console.log(process.env.DB)
       console.log('Database is connected')
+     
+    
+
+    User.find().then(users => users.map(
+      user => userController.rating(user._id)
+    ))
+    
+
     });
   };
   connectWithRetry();

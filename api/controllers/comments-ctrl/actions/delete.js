@@ -1,4 +1,12 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+export const deleteOne = async (Comment, Post, post_id, comment_id, ObjectId) => {
+=======
  const deleteOne = async (Comment, Post, post_id, comment_id, ObjectId) => {
+>>>>>>> develop
+=======
+ const deleteOne = async (Comment, Post, post_id, comment_id, ObjectId) => {
+>>>>>>> develop
 
     if (!ObjectId.isValid(post_id)) return { status: false, code: 409, err: { msg: "wrong post id" } }
     if (!ObjectId.isValid(comment_id)) return { status: false, code: 409, err: { msg: "wrong comment id" } }
@@ -40,5 +48,14 @@
 
         return { status: false, code: 500, err }
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
+}
+=======
 }
 module.exports=deleteOne;
+>>>>>>> develop
+=======
+}
+module.exports=deleteOne;
+>>>>>>> develop

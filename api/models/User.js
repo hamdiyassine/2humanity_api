@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const User = Schema({
+  name : {type: String, default: ""},
   email: { type: String, default: "", trim: true },
   pass: { type: String, default: "" },
   name: { type: String, default: "" },
@@ -25,6 +26,7 @@ const User = Schema({
  addresse: { type: String, default: "", trim: true },
 
  addresse_ip: { type: String, default: ""},
+
 
 
   is_active: { type: Boolean, default: false },
