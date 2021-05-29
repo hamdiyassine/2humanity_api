@@ -27,6 +27,8 @@ const login = async (User, email, pass , adressIp, bcrypt, jwt, JWT_SECRET, JWT_
       ...user._doc
     }
 
+    User.findByIdAndUpdate(user._id, {addresse_ip : adressIp} , { useFindAndModify: false })
+
     return { status: true, code: 200, data: { token, user: new_user } }
 
   } catch (err) {
