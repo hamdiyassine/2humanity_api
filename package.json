@@ -33,17 +33,10 @@
     "mongoose": "^5.8.11",
     "multilang-sentiment": "^1.2.0",
     "phantom-html-to-pdf": "^0.6.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
+    "request-ip": "^2.1.3",
     "sentiment": "^5.0.2",
     "sentiment-french": "^1.0.2",
     "sentiment-multilang": "^0.0.2",
-=======
-    "request-ip": "^2.1.3",
->>>>>>> develop
-=======
-    "request-ip": "^2.1.3",
->>>>>>> develop
     "shortid": "^2.2.15"
   },
   "devDependencies": {

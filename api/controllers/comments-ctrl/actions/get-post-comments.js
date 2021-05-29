@@ -30,12 +30,5 @@ const getPostComments = async (Comment, Post, post_id, ObjectId) => {
     }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export default getPostComments
-=======
 module.exports=getPostComments;
->>>>>>> develop
-=======
-module.exports=getPostComments;
->>>>>>> develop
+

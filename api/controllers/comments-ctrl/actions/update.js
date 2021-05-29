@@ -45,12 +45,4 @@ const update = async (Comment, Post, data, post_id, comment_id, ObjectId) => {
     }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export default update;
-=======
 module.exports=update;
->>>>>>> develop
-=======
-module.exports=update;
->>>>>>> develop
