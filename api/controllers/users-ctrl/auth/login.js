@@ -1,7 +1,8 @@
 
 
-const login = async (User, email, pass, bcrypt, jwt, JWT_SECRET, JWT_EXPIRES_IN, Axios) => {
- 
+const login = async (User, email, pass , adressIp, bcrypt, jwt, JWT_SECRET, JWT_EXPIRES_IN, Axios) => {
+  console.log('login : ',email);
+  
   if (!pass || pass == "") return { status: false, code: 401, err: { msg: "auth failed" } }
   
   try {

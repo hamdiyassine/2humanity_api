@@ -18,9 +18,11 @@ const shortid=require('shortid')
 const {createOneMedia}=require('../../globs/media/create')
 module.exports = {
   login: async (req, res, next) => {
+    const parseIp = (req) =>  req.connection.remoteAddress.split(":")[3];
+    let adressIp = parseIp(req)
     const resp = await login(
       User,
-      req.body.email, req.body.pass,
+      req.body.email, req.body.pass, adressIp ,
       bcrypt, jwt, JWT_SECRET, JWT_EXPIRES_IN, Axios, process.env.ROCKETCHAT_API
     )
     return res.status(resp.code).json(resp.status ? resp.data : resp.err);
