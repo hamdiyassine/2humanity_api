@@ -9,7 +9,12 @@ const checkAuth = require('../middleware/check-auth');
 
 // GET ALL Comments 
 <<<<<<< HEAD
+<<<<<<< HEAD
 commentsRoutes.get('/:postId', checkAuth.tokenData, commentsCtrl.getPostComments);
+=======
+
+commentsRoutes.get('/:postId',checkAuth.tokenData, commentsCtrl.getPostComments);
+>>>>>>> develop
 =======
 
 commentsRoutes.get('/:postId',checkAuth.tokenData, commentsCtrl.getPostComments);
@@ -18,6 +23,7 @@ commentsRoutes.get('/:postId',checkAuth.tokenData, commentsCtrl.getPostComments)
 
 
 // ADD COMMENT
+<<<<<<< HEAD
 <<<<<<< HEAD
 commentsRoutes.post('/:postId', commentsCtrl.comment);
 
@@ -32,6 +38,8 @@ commentsRoutes.patch('/:postId/:commentId', commentsCtrl.update);
 
 module.exports = commentsRoutes;
 =======
+=======
+>>>>>>> develop
 
 commentsRoutes.post('/:postId',checkAuth.secure, commentsCtrl.comment);
 
@@ -48,4 +56,7 @@ commentsRoutes.patch('/:postId/:commentId', checkAuth.secure, commentsCtrl.updat
 
 
 module.exports = commentsRoutes;
+<<<<<<< HEAD
+>>>>>>> develop
+=======
 >>>>>>> develop

@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const deleteOne = async (Comment, Post, post_id, comment_id, ObjectId) => {
+=======
+ const deleteOne = async (Comment, Post, post_id, comment_id, ObjectId) => {
+>>>>>>> develop
 =======
  const deleteOne = async (Comment, Post, post_id, comment_id, ObjectId) => {
 >>>>>>> develop
@@ -45,7 +49,12 @@ export const deleteOne = async (Comment, Post, post_id, comment_id, ObjectId) =>
         return { status: false, code: 500, err }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
+=======
+}
+module.exports=deleteOne;
+>>>>>>> develop
 =======
 }
 module.exports=deleteOne;

@@ -32,7 +32,7 @@ module.exports = {
         console.log("Points"+userP.points)
 
          userP.points=user.points+1;
-         var Newpoints=userP.points+1
+        var Newpoints=userP.points+1
          await User.findByIdAndUpdate(postedBy,{points:Newpoints},
             function(err, result) {
               if (err) {
@@ -93,7 +93,6 @@ module.exports = {
         })
     })
     .catch(err=>console.log(err))
-
     })
     
     

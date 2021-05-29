@@ -1,7 +1,11 @@
 const create = async (Comment, Post, data, tokenData, post_id, ObjectId) => {
     let { message } = data;
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (!message || message == '') return { status: false, code: 409, err: { msg: "wrong comment" } }
+=======
+    if ( message == '') return { status: false, code: 409, err: { msg: "wrong comment" } }
+>>>>>>> develop
 =======
     if ( message == '') return { status: false, code: 409, err: { msg: "wrong comment" } }
 >>>>>>> develop
@@ -19,8 +23,13 @@ const create = async (Comment, Post, data, tokenData, post_id, ObjectId) => {
 
         const old_comment = await Comment.findOne({ post: post_id });
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         post_comments = old_comment.comments;
+=======
+        if (old_comment ) post_comments = old_comment.comments;
+       
+>>>>>>> develop
 =======
         if (old_comment ) post_comments = old_comment.comments;
        
@@ -34,8 +43,11 @@ const create = async (Comment, Post, data, tokenData, post_id, ObjectId) => {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         const patch = await Comment.updateOne({ _id: old_comment._id }, { $set: new_data });
 =======
+=======
+>>>>>>> develop
         let patch = null
         if (old_comment ) patch = await Comment.updateOne({ _id: old_comment._id }, { $set: new_data });
         else{
@@ -44,6 +56,9 @@ const create = async (Comment, Post, data, tokenData, post_id, ObjectId) => {
             });
             patch = await new_comments.save();
         }
+<<<<<<< HEAD
+>>>>>>> develop
+=======
 >>>>>>> develop
 
         if (patch) {
@@ -74,7 +89,11 @@ const create = async (Comment, Post, data, tokenData, post_id, ObjectId) => {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default create
+=======
+module.exports=create;
+>>>>>>> develop
 =======
 module.exports=create;
 >>>>>>> develop

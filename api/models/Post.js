@@ -5,6 +5,11 @@ var Post=new Schema({
     content:{type:String,default:"",required:true},
     media:{type:String,default:"",required:true},
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    category:{type:String,default:"",required:true},
+     
+>>>>>>> develop
 =======
     category:{type:String,default:"",required:true},
      
@@ -22,7 +27,11 @@ var Post=new Schema({
     timestamps: true
   })
 <<<<<<< HEAD
+<<<<<<< HEAD
 module.exports=mongoose.model('Post',Post);
+=======
+module.exports=mongoose.model('Post',Post);
+>>>>>>> develop
 =======
 module.exports=mongoose.model('Post',Post);
 >>>>>>> develop

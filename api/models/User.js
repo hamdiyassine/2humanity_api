@@ -25,11 +25,6 @@ const User = Schema({
  ],
  addresse: { type: String, default: "", trim: true },
 
-
-  addresse: {
-    type: String, default: ""
-  },
-
  addresse_ip: { type: String, default: ""},
 
 
