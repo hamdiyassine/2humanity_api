@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon server.js",
     "start": "./start_script.sh"
   },
   "keywords": [
@@ -24,6 +25,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6",
     "html-pdf": "^2.2.0",
+    "ipware": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
     "mkdirp": "^1.0.3",
     "moment": "^2.27.0",
@@ -31,9 +33,13 @@
     "mongoose": "^5.8.11",
     "multilang-sentiment": "^1.2.0",
     "phantom-html-to-pdf": "^0.6.0",
+<<<<<<< HEAD
     "sentiment": "^5.0.2",
     "sentiment-french": "^1.0.2",
     "sentiment-multilang": "^0.0.2",
+=======
+    "request-ip": "^2.1.3",
+>>>>>>> develop
     "shortid": "^2.2.15"
   },
   "devDependencies": {

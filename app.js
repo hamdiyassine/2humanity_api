@@ -9,8 +9,11 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import User, { collection } from "./api/models/User";
 const userController = require('./api/controllers/users-ctrl/creation/userController');
-dotenv.config();
 
+dotenv.config();
+var getIP = require('ipware')().get_ip;
+
+var requestIp = require('request-ip');
 
 mongoose.Promise = global.Promise;
 console.log('process.env.MONGO_DB', process.env.MONGO_DB);
@@ -68,14 +71,19 @@ app.use(fileUpload(
 app.use('/users', require('./api/routes/users-routes'));
 app.use('/medias', require('./api/routes/media-routes'));
 app.use('/posts', require('./api/routes/posts-routes'));
-//app.use('/events', require('./api/routes/events-routes'));
+app.use('/events', require('./api/routes/events-routes'));
 app.use('/comments',require('./api/routes/comments-routes'));
 
 app.get('/', (req, res, next) => {
   console.log('OPEN ROOT !');
-  res.status(200).json({ msg: ' API DEV', port: process.env.PORT || 5000 });
+  // var clientIp = requestIp.getClientIp(req);
+  // var ipInfo = getIP(req);
+  // console.log(clientIp);
+    // { clientIp: '127.0.0.1', clientIpRoutable: false }
+  next();
+  res.status(200).json({ msg: 'PORTAIL API DEV', port: process.env.PORT || 5000 });
+ 
 })
-
 const port = process.env.PORT || 5000;
 app.listen(port, function () {
   console.info('Listening on port ' + port);

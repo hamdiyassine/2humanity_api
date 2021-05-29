@@ -9,4 +9,4 @@ const acceptableImage = (mime, types=[])=>{
   return {status: false, code: 422, err: {msg: "unacceptable image type"}}
 }
 
-export {acceptableImage}
+module.exports={acceptableImage};

@@ -7,4 +7,4 @@ const fileSize = (data, maxSize) => {
     return { status: false, code: 422, err: { msg: "file is more than limit" } }}
 }
 
-export { fileSize }
+module.exports={fileSize};

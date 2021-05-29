@@ -30,4 +30,8 @@ const getPostComments = async (Comment, Post, post_id, ObjectId) => {
     }
 }
 
+<<<<<<< HEAD
 export default getPostComments
+=======
+module.exports=getPostComments;
+>>>>>>> develop

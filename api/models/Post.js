@@ -4,6 +4,11 @@ var Post=new Schema({
     title:{type:String,default:"",required:true},
     content:{type:String,default:"",required:true},
     media:{type:String,default:"",required:true},
+<<<<<<< HEAD
+=======
+    category:{type:String,default:"",required:true},
+     
+>>>>>>> develop
     postedBy: 
         {
            type: mongoose.Schema.Types.ObjectId,
@@ -16,4 +21,8 @@ var Post=new Schema({
     collection: 'posts',
     timestamps: true
   })
+<<<<<<< HEAD
 module.exports=mongoose.model('Post',Post);
+=======
+module.exports=mongoose.model('Post',Post);
+>>>>>>> develop
